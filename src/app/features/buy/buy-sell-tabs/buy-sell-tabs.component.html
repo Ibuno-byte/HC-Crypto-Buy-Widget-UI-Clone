@@ -1,0 +1,16 @@
+<div class="buy-sell-tabs">
+  <app-icon-button
+    [text]="'Buy'"
+    [active]="activeTab === 'buy'"
+    (click)="setActiveTab('buy')"
+    [customClass]="activeTab === 'buy' ? 'tab-button tab-button-active' : 'tab-button '"
+  >
+  </app-icon-button>
+  <app-icon-button
+    [text]="'Sell'"
+    [active]="activeTab === 'sell'"
+    (click)="setActiveTab('sell')"
+    [customClass]="activeTab === 'sell' ? 'tab-button tab-button-active' : 'tab-button '"
+  >
+  </app-icon-button>
+</div>

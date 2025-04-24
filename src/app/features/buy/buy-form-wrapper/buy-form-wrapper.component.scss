@@ -1,0 +1,188 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  font-family: "Roboto";
+
+  .buy-sell-tabs-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+  }
+
+  .divider {
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .content-wrapper {
+    width: 100%;
+    max-width: 800px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1),
+      0 1px 3px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    transition: all 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1),
+        0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .content-body {
+      padding: 1.5rem 2.5rem 2.5rem;
+      margin-top: 20px;
+    }
+
+    .step-progress-container {
+      width: 100%;
+      margin-bottom: 2.5rem;
+      position: relative;
+
+      .progress-bar {
+        display: flex;
+        height: 8px;
+        background: #e0e0e0;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+        position: relative;
+
+        .progress-segment {
+          flex: 1;
+          height: 100%;
+          position: relative;
+          background: #e0e0e0;
+          transition: background 0.3s ease;
+
+          &:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 2px;
+            height: 16px;
+            background: white;
+            z-index: 2;
+          }
+
+          &.completed,
+          &.active {
+            background: #000;
+            border-radius: 5px;
+          }
+
+          .step-marker {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translate(50%, -50%);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3;
+
+            .marker-icon {
+              font-size: 12px;
+              font-weight: bold;
+              color: white;
+            }
+          }
+
+          &.completed .step-marker,
+          &.active .step-marker {
+            background: #000;
+          }
+
+          &.active .step-marker {
+            width: 28px;
+            height: 28px;
+          }
+        }
+      }
+
+      .step-labels {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 12px;
+
+        .step-label {
+          font-size: 0.75rem;
+          color: #999;
+          text-align: center;
+          flex: 1;
+          padding: 0 4px;
+          transition: color 0.3s ease;
+
+          &:first-child {
+            text-align: left;
+          }
+          &:last-child {
+            text-align: right;
+          }
+        }
+      }
+    }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 16px;
+      font-size: 14px;
+      color: #666;
+
+      &-logo {
+        height: 20px;
+        width: auto;
+        object-fit: contain;
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+
+  // 🚀 Mobile responsiveness
+  @media (max-width: 768px) {
+    padding: 1rem;
+
+    .content-wrapper {
+      max-width: 100%;
+      border-radius: 8px;
+
+      .content-body {
+        padding: 1.25rem;
+      }
+
+      .step-progress-container {
+        .step-labels {
+          padding: 0 6px;
+
+          .step-label {
+            font-size: 0.65rem;
+          }
+        }
+      }
+
+      .footer {
+        flex-direction: column;
+        text-align: center;
+        font-size: 12px;
+
+        &-logo {
+          height: 18px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,70 @@
+<div class="currency-select-form">
+  <div class="form-card">
+    <div class="input-group">
+      <div class="input-container">
+        <label class="input-label">You Pay</label>
+        <input 
+          type="text" 
+          class="amount-input"
+          [(ngModel)]="state.amountPay">
+      </div>
+      <div class="currency-selector">
+        <select class="currency-select" [(ngModel)]="state.crypto">
+          <option value="USDT">USDT</option>
+          <option value="USDC">USDC</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-card">
+    <div class="input-group">
+      <div class="input-container">
+        <label class="input-label">You receive</label>
+        <input 
+          type="text" 
+          class="amount-input"
+          [(ngModel)]="state.amountReceive">
+      </div>
+      <div class="currency-selector">
+        <select class="currency-select" [(ngModel)]="state.currencyReceive">
+          <option value="KES">KES</option>
+          <option value="ETH">ETH</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="exchange-rate">1 USDT = 128.152 KES</div>
+
+  <div class="receive-method">
+    <label class="input-label">Receive funds in</label>
+    <div class="form-card">
+      <select class="method-select" [(ngModel)]="state.provider">
+        <option value="Mpesa">Mpesa</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="info-row">
+    <span>Estimated Time</span>
+    <span>1 min</span>
+  </div>
+
+  <div class="info-row">
+    <span>Estimated Fee</span>
+    <span>5.00 USDT</span>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="action-button">
+    <app-icon-button
+      [text]="'Next: Provide Transfer Details'"
+      (click)="state.nextStep()"
+      [customClass]="'next-button'"
+      [icon]="'arrow_forward'"
+      [iconPosition]="'after'">
+    </app-icon-button>
+  </div>
+</div>

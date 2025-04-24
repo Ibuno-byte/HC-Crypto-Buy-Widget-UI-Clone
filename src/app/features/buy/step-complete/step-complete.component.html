@@ -1,0 +1,57 @@
+<div class="payment-summary">
+  <div class="payment-header">
+    <div class="payment-title">Complete Payment</div>
+    <div class="payment-amount">1,000.00 USDT</div>
+    <div class="payment-timer">
+      <span>Remaining time for transfer:</span>
+      <span class="timer-active" *ngIf="timeLeft">
+        {{ minutes | number : "2.0-0" }}:{{ seconds | number : "2.0-0" }}
+      </span>
+      <span class="timer-expired" *ngIf="!timeLeft"> Time's up! </span>
+    </div>
+
+    <div class="info-card">
+      <span class="info-label">Wallet Address</span>
+      <span class="info-value"
+        >xAbC1234567890defABC1234567890dEfAbC12345...</span
+      >
+    </div>
+
+    <div class="info-card">
+      <span class="info-label">Network</span>
+      <span class="info-value">ETH</span>
+    </div>
+  </div>
+
+  <div class="info-card-warning">
+    <mat-icon class="info-icon">info_outline</mat-icon>
+    <span class="info-value"
+      >Please only send the selected token on the specified network to this
+      address. Order will be cancelled when the timer hits zero.</span
+    >
+  </div>
+
+  <div class="or-scan-qrcode">Or Scan QR Code</div>
+
+  <div class="qrcode-container">
+    <qrcode
+      [qrdata]="qrData"
+      [width]="qrSize"
+      [errorCorrectionLevel]="'M'"
+      [margin]="4"
+      [colorDark]="'#000000ff'"
+      [colorLight]="'#ffffffff'"
+    >
+    </qrcode>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="action-buttons">
+    <app-icon-button
+      [text]="'Cancel Payment'"
+      [customClass]="'cancel-button'"
+    >
+    </app-icon-button>
+  </div>
+</div>

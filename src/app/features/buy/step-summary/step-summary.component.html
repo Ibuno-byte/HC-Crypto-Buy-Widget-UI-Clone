@@ -1,0 +1,49 @@
+<div class="summary-form">
+  <div class="summary-header">
+    <div class="summary-header-title">Review your transaction</div>
+    <div class="summary-header-subtitle">
+      Please review the details of your order before submitting the request
+    </div>
+  </div>
+  <div class="summary-method">
+    <div class="details-card">
+      <div class="details-card-item">
+        <div class="details-card-item-title">Send</div>
+        <div>1,000.00 USDT</div>
+      </div>
+      <div class="details-card-item">
+        <div class="details-card-item-title">Fee</div>
+        <div>5.00 USDT</div>
+      </div>
+      <div class="details-card-item">
+        <div class="details-card-item-title">Send</div>
+        <div>128,152.26 KES</div>
+      </div>
+      <div class="details-card-item">
+        <div class="details-card-item-title">Estimated Arrival</div>
+        <div>1 min</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="action-button">
+    <app-icon-button
+      [text]="'Go Back'"
+      (click)="state.prevStep()"
+      [customClass]="'prev-button'"
+      [icon]="'arrow_backward'"
+      [iconPosition]="'before'"
+    >
+    </app-icon-button>
+    <app-icon-button
+      [text]="'Continue to Pay'"
+      (click)="state.nextStep()"
+      [customClass]="'next-button'"
+      [icon]="'arrow_forward'"
+      [iconPosition]="'after'"
+    >
+    </app-icon-button>
+  </div>
+</div>

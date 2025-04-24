@@ -1,0 +1,127 @@
+.currency-select-form {
+  margin: 0 auto;
+
+  .form-card {
+    background: rgba(248, 244, 244, 0.55);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+  }
+
+  .input-group {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    .input-container {
+      flex: 1;
+    }
+
+    .currency-selector {
+      width: 120px;
+    }
+  }
+
+  .input-label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-size: 14px;
+  }
+
+  .amount-input {
+    font-size: 20px;
+    font-weight: 700;
+    width: 100%;
+    border: none;
+    background: transparent;
+    padding: 8px 0;
+    outline: none;
+
+    &::placeholder {
+      color: #ccc;
+    }
+  }
+
+  .currency-select,
+  .method-select {
+    padding: 12px 16px;
+    background: #fff;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  .method-select {
+    background: rgba(248, 244, 244, 0.55);
+  }
+
+  .exchange-rate {
+    text-align: right;
+    color: #666;
+    margin: 8px 0 20px;
+    font-size: 14px;
+  }
+
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #333;
+  }
+
+  .divider {
+    height: 1px;
+    background: #eee;
+    margin: 24px 0;
+  }
+
+  .action-button {
+    width: 100%;
+    margin-top: 25px;
+  }
+
+  // Mobile responsiveness
+  @media (max-width: 600px) {
+    padding: 12px;
+
+    .form-card {
+      padding: 16px;
+    }
+
+    .input-group {
+      flex-direction: column;
+      gap: 12px;
+
+      .currency-selector {
+        width: 100%;
+      }
+    }
+
+    .amount-input {
+      font-size: 18px;
+    }
+
+    .action-button {
+      margin-top: 20px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .form-card {
+      padding: 12px;
+    }
+
+    .amount-input {
+      font-size: 16px;
+    }
+
+    .currency-select,
+    .method-select {
+      padding: 10px 12px;
+    }
+  }
+}

@@ -1,0 +1,38 @@
+<div class="account-details-form">
+  <div class="account-details-header">
+    <div class="account-details-header-title">Where do we pay you?</div>
+    <div class="account-details-header-subtitle">Please provide details about the account we should send money to:</div>
+  </div>
+  <div class="account-details-method">
+    <label class="input-label">Account Name</label>
+    <div class="form-card">
+      <input class="account-input" [(ngModel)]="state.phoneNumber" placeholder="0x..." />
+    </div>
+  </div>
+  <div class="account-details-method">
+    <label class="input-label">Phone Number</label>
+    <div class="phone-form-card">
+      <input class="phone-input"[(ngModel)]="state.phoneNumber" placeholder="0x..." />
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="action-button">
+    <app-icon-button
+      [text]="'Go Back'"
+      (click)="state.prevStep()"
+      [customClass]="'prev-button'"
+      [icon]="'arrow_backward'"
+      [iconPosition]="'before'">
+    </app-icon-button>
+    <app-icon-button
+      [text]="'Continue'"
+      (click)="validate()"
+      [customClass]="'next-button'"
+      [icon]="'arrow_forward'"
+      [iconPosition]="'after'">
+    </app-icon-button>
+  </div>
+  <p *ngIf="error">Invalid address</p>
+</div>

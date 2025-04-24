@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { BuyFormWrapperComponent } from './features/buy/buy-form-wrapper/buy-form-wrapper.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  standalone: true,
+  imports: [BuyFormWrapperComponent],
+  template: `<app-buy-form-wrapper />`,
 })
-export class AppComponent {
-  title = 'hc-crypto-buy-widget';
-}
+export class AppComponent {}

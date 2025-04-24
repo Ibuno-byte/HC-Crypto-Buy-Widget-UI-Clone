@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="content-wrapper">
+    <div class="buy-sell-tabs-container">
+      <app-buy-sell-tabs></app-buy-sell-tabs>
+    </div>
+    <div class="divider"></div>
+    <div class="content-body">
+      <div class="step-progress-container">
+        <div class="progress-bar">
+          <div
+            *ngFor="let step of steps; let i = index"
+            class="progress-segment"
+            [class.completed]="state.step > i"
+            [class.active]="state.step === i"
+          >
+            <div class="step-marker" *ngIf="state.step > i">
+              <span class="marker-icon" *ngIf="state.step > i">✓</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ng-container [ngSwitch]="state.step">
+        <app-step-crypto-selector *ngSwitchCase="0" />
+        <app-step-account-details *ngSwitchCase="1" />
+        <app-step-verify-email *ngSwitchCase="2" />
+        <app-step-summary *ngSwitchCase="3" />
+        <app-step-complete *ngSwitchCase="4" />
+      </ng-container>
+    </div>
+    <div class="divider"></div>
+    <div class="footer">
+      <span>Powered by</span>
+      <img src="/assets/honeycoin-logo-sub.png" alt="Company Logo" class="footer-logo">
+    </div>
+  </div>
+</div>

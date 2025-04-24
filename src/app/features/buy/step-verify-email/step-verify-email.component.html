@@ -1,0 +1,31 @@
+<div class="verify-email-form">
+    <div class="verify-email-header">
+      <div class="verify-email-header-title">Enter Email Address to continue</div>
+    </div>
+    <div class="verify-email-method">
+      <div class="form-card">
+        <input type="email" class="account-input" [(ngModel)]="state.emailAddress" placeholder="0x..." />
+      </div>
+    </div>
+  
+    <div class="divider"></div>
+  
+    <div class="action-button">
+      <app-icon-button
+        [text]="'Go Back'"
+        (click)="state.prevStep()"
+        [customClass]="'prev-button'"
+        [icon]="'arrow_backward'"
+        [iconPosition]="'before'">
+      </app-icon-button>
+      <app-icon-button
+        [text]="'Next: Verify'"
+        (click)="state.nextStep()"
+        [customClass]="'next-button'"
+        [icon]="'arrow_forward'"
+        [iconPosition]="'after'">
+      </app-icon-button>
+    </div>
+    <p *ngIf="error">Invalid address</p>
+  </div>
+  

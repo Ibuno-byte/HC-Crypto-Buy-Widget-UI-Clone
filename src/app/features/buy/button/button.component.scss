@@ -1,0 +1,70 @@
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+
+  &.active {
+    font-weight: 600;
+  }
+
+  .icon {
+    display: flex;
+    align-items: center;
+    
+    mat-icon {
+      font-size: 18px;
+      width: 18px;
+      height: 18px;
+    }
+  }
+}
+
+.prev-button {
+  width: 100%;
+  padding: 16px;
+  background: rgba(19, 117, 117, 0.251);
+  color: rgb(19, 117, 117);
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.next-button {
+  width: 100%;
+  padding: 16px;
+  background: #000;
+  color: white;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.cancel-button {
+  width: 100%;
+  padding: 16px;
+  background: #cf9b9b98;
+  color: #6b4040c4;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.tab-button {
+  width: 100%;
+  min-width: 150px;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.tab-button-active {
+  width: 100%;
+  background: #000;
+  color: white;
+}
