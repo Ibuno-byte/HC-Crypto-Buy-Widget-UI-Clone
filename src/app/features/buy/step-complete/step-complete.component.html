@@ -1,7 +1,16 @@
 <div class="payment-summary">
   <div class="payment-header">
     <div class="payment-title">Complete Payment</div>
-    <div class="payment-amount">1,000.00 USDT</div>
+    <div class="payment-amount">
+      <span id="amountPay"
+        >{{ globals.formatNumberWithCommas(state.amountPay) }}
+        {{ state.currencyPay }}</span
+      ><span
+        ><mat-icon id="copyIcon" class="mat-icon content-copy-outlined cursor-pointer" (click)="copyText('amountPay')"
+          >content_copy</mat-icon
+        ></span
+      >
+    </div>
     <div class="payment-timer">
       <span>Remaining time for transfer:</span>
       <span class="timer-active" *ngIf="timeLeft">
@@ -11,15 +20,16 @@
     </div>
 
     <div class="info-card">
-      <span class="info-label">Wallet Address</span>
-      <span class="info-value"
-        >xAbC1234567890defABC1234567890dEfAbC12345...</span
-      >
+      <div class="info-label">Wallet Address</div>
+      <div class="info-flex cursor-pointer">
+        <div class="info-value" id="walletAddress">{{ state.walletAddress }}</div>
+        <mat-icon class="mat-icon content-copy-outlined cursor-pointer" (click)="copyText('amountPay')">content_copy</mat-icon>
+      </div>
     </div>
 
     <div class="info-card">
-      <span class="info-label">Network</span>
-      <span class="info-value">ETH</span>
+      <div class="info-label">Network</div>
+      <div class="info-value">ETH</div>
     </div>
   </div>
 
@@ -48,10 +58,7 @@
   <div class="divider"></div>
 
   <div class="action-buttons">
-    <app-icon-button
-      [text]="'Cancel Payment'"
-      [customClass]="'cancel-button'"
-    >
+    <app-icon-button [text]="'Cancel Payment'" [customClass]="'cancel-button'">
     </app-icon-button>
   </div>
 </div>

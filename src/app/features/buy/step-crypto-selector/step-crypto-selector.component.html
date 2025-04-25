@@ -1,44 +1,78 @@
 <div class="currency-select-form">
-  <div class="form-card">
+  <h2 class="form-title">
+    {{ state.transactionType === "sell" ? "Sell Crypto" : "Buy Crypto" }}
+  </h2>
+
+  <div class="formErrors.amountPay ? form-card form-card-error : form-card">
     <div class="input-group">
       <div class="input-container">
-        <label class="input-label">You Pay</label>
-        <input 
-          type="text" 
+        <label class="input-label">
+          {{ state.transactionType === "sell" ? "You Pay" : "You Spend" }}
+        </label>
+        <input
+          type="text"
           class="amount-input"
-          [(ngModel)]="state.amountPay">
+          [(ngModel)]="state.amountPay"
+          (input)="handleAmountInput($event)"
+          (keydown)="handleAmountInput($event)"
+        />
       </div>
       <div class="currency-selector">
-        <select class="currency-select" [(ngModel)]="state.crypto">
-          <option value="USDT">USDT</option>
-          <option value="USDC">USDC</option>
+        <select class="currency-select" [(ngModel)]="state.currencyPay">
+          <option
+            *ngFor="let currency of getFirstCurrencyOptions()"
+            [value]="currency.value"
+          >
+            {{ currency.label }}
+          </option>
         </select>
       </div>
     </div>
+  </div>
+  
+  <div *ngIf="formErrors.amountPay" class="error-message">
+    {{ formErrors.amountPay }}
   </div>
 
   <div class="form-card">
     <div class="input-group">
       <div class="input-container">
-        <label class="input-label">You receive</label>
-        <input 
-          type="text" 
+        <label class="input-label">
+          {{ state.transactionType === "sell" ? "You Receive" : "You Get" }}
+        </label>
+        <input
+          type="text"
           class="amount-input"
-          [(ngModel)]="state.amountReceive">
+          [(ngModel)]="state.amountReceive"
+          disabled
+        />
       </div>
       <div class="currency-selector">
         <select class="currency-select" [(ngModel)]="state.currencyReceive">
-          <option value="KES">KES</option>
-          <option value="ETH">ETH</option>
+          <option
+            *ngFor="let currency of getSecondCurrencyOptions()"
+            [value]="currency.value"
+          >
+            {{ currency.label }}
+          </option>
         </select>
       </div>
     </div>
   </div>
 
-  <div class="exchange-rate">1 USDT = 128.152 KES</div>
+  <div class="exchange-rate">
+    1 {{ state.currencyPay }} = {{ state.rate }}
+    {{ state.currencyReceive }}
+  </div>
 
+  <!-- Rest of your template remains the same -->
   <div class="receive-method">
-    <label class="input-label">Receive funds in</label>
+    <label class="input-label" *ngIf="state.transactionType === 'sell'"
+      >Receive funds in</label
+    >
+    <label class="input-label" *ngIf="state.transactionType === 'buy'"
+      >Payment Method</label
+    >
     <div class="form-card">
       <select class="method-select" [(ngModel)]="state.provider">
         <option value="Mpesa">Mpesa</option>
@@ -48,23 +82,32 @@
 
   <div class="info-row">
     <span>Estimated Time</span>
-    <span>1 min</span>
+    <span>{{ state.transactionType === "sell" ? "1 min" : "2-5 mins" }}</span>
   </div>
 
   <div class="info-row">
     <span>Estimated Fee</span>
-    <span>5.00 USDT</span>
+    <span>
+      {{
+        state.transactionType === "sell" ? "5.00 " + state.currencyPay : "3.5%"
+      }}
+    </span>
   </div>
 
   <div class="divider"></div>
 
   <div class="action-button">
     <app-icon-button
-      [text]="'Next: Provide Transfer Details'"
-      (click)="state.nextStep()"
+      [text]="
+        state.transactionType === 'sell'
+          ? 'Next: Provide Transfer Details'
+          : 'Next: Payment Details'
+      "
+      (click)="validateAndProceed()"
       [customClass]="'next-button'"
       [icon]="'arrow_forward'"
-      [iconPosition]="'after'">
+      [iconPosition]="'after'"
+    >
     </app-icon-button>
   </div>
 </div>

@@ -24,7 +24,7 @@ export class StepAmountInputComponent {
   }
 
   convert() {
-    this.rateService.getRate('KES', this.state.crypto).subscribe((rate) => {
+    this.rateService.getRate('KES', this.state.currencyPay).subscribe((rate) => {
       this.state.rate = rate;
       this.cryptoAmount = this.state.amountReceive / rate;
     });
