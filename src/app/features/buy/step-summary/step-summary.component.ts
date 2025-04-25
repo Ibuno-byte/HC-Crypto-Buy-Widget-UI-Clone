@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { BuyStateService } from '../../../services/buy-state.service';
 import { IconButtonComponent } from '../button/button.component';
+import { GlobalService } from '../../../services/global.service';
 
 @Component({
   standalone: true,
@@ -12,5 +13,6 @@ import { IconButtonComponent } from '../button/button.component';
 export class StepSummaryComponent {
   constructor(
     public state: BuyStateService,
+    public globals: GlobalService,
   ) {}
 }

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { ExchangeRateService } from '../../../services/exchange-rate.service';
 import { BuyStateService } from '../../../services/buy-state.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { IconButtonComponent } from '../button/button.component';
+import { GlobalService } from '../../../services/global.service';
 
 @Component({
   standalone: true,
@@ -13,20 +13,34 @@ import { IconButtonComponent } from '../button/button.component';
   imports: [CommonModule, FormsModule, IconButtonComponent]
 })
 export class StepAmountInputComponent {
-  cryptoAmount = 0;
-  error = "";
 
   constructor(
     public state: BuyStateService,
-    private rateService: ExchangeRateService
-  ) {
-    this.convert();
+    public globals: GlobalService,
+  ) {}
+  
+  formErrors = {
+    emailAddress: '',
+  };
+
+  validateForm(): boolean {
+    let isValid = true;
+    this.formErrors = { emailAddress: '' };
+  
+    if (!this.state.emailAddress) {
+      this.formErrors.emailAddress = 'Please enter an email address';
+      isValid = false;
+    } else if (!this.globals.isValidEmail(this.state.emailAddress)) {
+      this.formErrors.emailAddress = 'Please enter a valid email address';
+      isValid = false;
+    }
+  
+    return isValid;
   }
 
-  convert() {
-    this.rateService.getRate('KES', this.state.currencyPay).subscribe((rate) => {
-      this.state.rate = rate;
-      this.cryptoAmount = this.state.amountReceive / rate;
-    });
+  validateAndProceed() {
+    if (this.validateForm()) {
+      this.state.nextStep();
+    }
   }
 }

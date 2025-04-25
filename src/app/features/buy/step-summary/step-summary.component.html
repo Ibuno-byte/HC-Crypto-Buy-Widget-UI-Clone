@@ -9,19 +9,31 @@
     <div class="details-card">
       <div class="details-card-item">
         <div class="details-card-item-title">Send</div>
-        <div>1,000.00 USDT</div>
+        <div>
+          {{ globals.formatNumberWithCommas(state.amountPay) }}
+          {{ state.currencyPay }}
+        </div>
       </div>
       <div class="details-card-item">
         <div class="details-card-item-title">Fee</div>
-        <div>5.00 USDT</div>
+        <div>
+          {{
+            state.transactionType === "sell"
+              ? "5.00 " + state.currencyPay
+              : "3.5%"
+          }}
+        </div>
       </div>
       <div class="details-card-item">
-        <div class="details-card-item-title">Send</div>
-        <div>128,152.26 KES</div>
+        <div class="details-card-item-title">To Receive</div>
+        <div>
+          {{ globals.formatNumberWithCommas(state.amountReceive) }}
+          {{ state.currencyReceive }}
+        </div>
       </div>
       <div class="details-card-item">
         <div class="details-card-item-title">Estimated Arrival</div>
-        <div>1 min</div>
+        <div>{{ state.transactionType === "sell" ? "1 min" : "2-5 mins" }}</div>
       </div>
     </div>
   </div>
